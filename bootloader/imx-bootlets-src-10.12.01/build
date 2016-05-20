@@ -1,2 +1,2 @@
 
-make CROSS_COMPILE=arm-fsl-linux-gnueabi- BOARD=iMX28_EVK
+make CROSS_COMPILE=arm-none-eabi- BOARD=iMX28_EVK

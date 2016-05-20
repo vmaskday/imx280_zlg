@@ -526,7 +526,7 @@ CONFIG_CAN_FLEXCAN=y
 # CONFIG_BT is not set
 # CONFIG_AF_RXRPC is not set
 CONFIG_WIRELESS=y
-# CONFIG_CFG80211 is not set
+CONFIG_CFG80211=n
 CONFIG_LIB80211=y
 # CONFIG_LIB80211_DEBUG is not set
 
@@ -812,7 +812,7 @@ CONFIG_BCMDHD=m
 CONFIG_BCMDHD_FW_PATH="/system/etc/firmware/fw_bcmdhd.bin"
 CONFIG_BCMDHD_NVRAM_PATH="/system/etc/firmware/nvram.txt"
 CONFIG_BCMDHD_CONFIG_PATH="/system/etc/firmware/config.txt"
-# CONFIG_BCMDHD_WEXT is not set
+CONFIG_BCMDHD_WEXT=y
 CONFIG_BCMDHD_OOB=y
 # CONFIG_BCMDHD_SDIO_IRQ is not set
 

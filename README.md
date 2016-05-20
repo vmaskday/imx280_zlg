@@ -1,2 +1,2 @@
-project new linux kernel in imx280
+porting new linux kernel to imx280
 some tools for imx280
