@@ -1,0 +1,66 @@
+#!/bin/sh
+
+echo "Linux kernel build menu, please select your choice:"
+echo "  1   make distclean"
+echo "  2   make menuconfig"
+echo "  3   config as EasyARM-i.MX280A"
+echo "  4   config as EasyARM-i.MX283A or EasyARM-i.MX287A"
+echo "  5   config as EasyARM-i.MX287B"
+echo "  8   copy zImage to tftp dir"
+echo "  q   exit"
+
+CC=arm-fsl-linux-gnueabi-
+
+make_distclean() {
+    echo "make distclean"
+    make ARCH=arm CROSS_COMPILE=$CC distclean
+}
+
+make_menuconfig() {
+    echo "make menuconfig"
+    make ARCH=arm CROSS_COMPILE=$CC menuconfig
+}
+
+make_kernel_modules() {
+    make ARCH=arm CROSS_COMPILE=$CC zImage
+    make ARCH=arm CROSS_COMPILE=$CC modules
+    echo chenxibing | sudo -S make ARCH=arm CROSS_COMPILE=$CC modules_install
+}
+
+build_EasyARM_iMX287B() {
+    make ARCH=arm CROSS_COMPILE=$CC EasyARM-iMX287B_defconfig
+    echo "config as EasyARM-i.MX287B, you can use 'make menuconfig' to config your kernel, or use 'make uImage/make zImage' to build  your kernel"
+}
+
+build_EasyARM_iMX280A() {
+    make ARCH=arm CROSS_COMPILE=$CC EasyARM-iMX280A_defconfig
+    echo "config as EasyARM-i.MX280A, you can use 'make menuconfig' to config your kernel, or use 'make uImage/make zImage' to build  your kernel"
+}
+
+build_EasyARM_iMX283A() {
+    make ARCH=arm CROSS_COMPILE=$CC EasyARM-iMX283A_defconfig
+    echo "config as EasyARM-i.MX283A or EasyARM-i.MX287A, you can use 'make menuconfig' to config your kernel, or use 'make uImage/make zImage' to build  your kernel"
+}
+
+
+copy_zImage() {
+    echo "copy zImage to tftp dir"
+    cp arch/arm/boot/zImage .
+    cp arch/arm/boot/zImage $TFTPBOOT
+}
+
+
+read sel
+echo "select $sel"
+
+case $sel in
+    [1]) make_distclean;;
+    [2]) make_menuconfig;;
+    [3]) build_EasyARM_iMX280A;;
+    [4]) build_EasyARM_iMX283A;;
+    [5]) build_EasyARM_iMX287B;;
+    [8]) copy_zImage;;
+    [q]) exit 0;;
+    *)   echo "ONLY accept 1/2/3/4/5/6/7/8/q/Q"
+esac    
+
