@@ -4,36 +4,54 @@ LD=gcc
 CFLAGS=-O3 -g -std=c99 -W -Wall `pkg-config --cflags libusb-1.0` $(DEFINES)
 LDFLAGS=`pkg-config --libs libusb-1.0`
 BINS=elftosb sbtoelf sbloader rsrctool elftosb1
-TARGET_OUT ?= ../../OUT/tools
-${TARGET_OUT}: ${TARGET_OUT}
-	mkdir -p $@
 
-elftosb_obj := elftosb.o crc.o crypto.o aes128.o sha1.o elf.o dbparser.o misc.o sb.o
+ifdef O
+ifeq ("$(origin O)", "command line")
+BUILD_DIR := $(O)
+endif
+endif
+ifneq ($(BUILD_DIR),)
+# Attempt to create a output directory.
+$(shell [ -d ${BUILD_DIR} ] || mkdir -p ${BUILD_DIR})
+# Verify if it was successful.
+BUILD_DIR := $(shell cd $(BUILD_DIR) && /bin/pwd)
+$(if $(BUILD_DIR),,$(error output directory does not exist))
+endif # ifneq ($(BUILD_DIR),)
+OBJTREE		:= $(if $(BUILD_DIR),$(BUILD_DIR),$(CURDIR))/
 
 
 all: $(BINS)
+	@echo success !
 
-%.o: %.c ${TARGET_OUT}
-	$(CC) $(CFLAGS) -c -o ${TARGET_OUT}/$@ $<
+%.o:
+	$(CC) $(CFLAGS) -c -o $@ $(notdir $(patsubst %.o,%.c,$@))
 
-sbtoelf: sbtoelf.o crc.o crypto.o aes128.o sha1.o xorcrypt.o dbparser.o elf.o misc.o sb.o sb1.o
-	$(LD) -o ${TARGET_OUT}/$@ ${TARGET_OUT}/$^ $(LDFLAGS)
+elftosb_obj := elftosb.o crc.o crypto.o aes128.o sha1.o elf.o dbparser.o misc.o sb.o
+elftosb_obj := $(addprefix $(OBJTREE),$(elftosb_obj))
+elftosb: $(elftosb_obj)
+	$(CC) -o $(OBJTREE)/$@ $^ $(LDFLAGS)
 
-elftosb: elftosb.o crc.o crypto.o aes128.o sha1.o elf.o dbparser.o misc.o sb.o
-	cd ${TARGET_OUT} \
-	$(LD) -o $@ $^ $(LDFLAGS)
+sbloader_obj := sbloader.o
+sbloader_obj := $(addprefix $(OBJTREE),$(sbloader_obj))
+sbloader: $(sbloader_obj)
+	@$(LD) -o $(OBJTREE)/$@ $^ $(LDFLAGS)
 
-elftosb1: elftosb1.o xorcrypt.o elf.o misc.o sb1.o
-	$(LD) -o ${TARGET_OUT}/$@ ${TARGET_OUT}/$^ $(LDFLAGS)
+sbtoelf_obj := sbtoelf.o crc.o crypto.o aes128.o sha1.o xorcrypt.o dbparser.o elf.o misc.o sb.o sb1.o
+sbtoelf_obj := $(addprefix $(OBJTREE),$(sbtoelf_obj))
+sbtoelf: $(sbtoelf_obj)
+	@$(LD) -o $(OBJTREE)/$@ $^ $(LDFLAGS)
 
-sbloader: sbloader.o
-	$(LD) -o ${TARGET_OUT}/$@ ${TARGET_OUT}/$^ $(LDFLAGS)
+elftosb1_obj := elftosb1.o xorcrypt.o elf.o misc.o sb1.o
+elftosb1_obj := $(addprefix $(OBJTREE),$(elftosb1_obj))
+elftosb1: $(elftosb1_obj)
+	@$(LD) -o $(OBJTREE)/$@ $^ $(LDFLAGS)
 
-rsrctool: rsrctool.o rsrc.o misc.o
-	$(LD) -o ${TARGET_OUT}/$@ ${TARGET_OUT}/$^ $(LDFLAGS)
-
+rsrctool_obj := rsrctool.o rsrc.o misc.o
+rsrctool_obj :=  $(addprefix $(OBJTREE),$(rsrctool_obj))
+rsrctool: $(rsrctool_obj)
+	@$(LD) -o $(OBJTREE)/$@ $^ $(LDFLAGS)
 clean:
-	rm -fr ${TARGET_OUT}/*.o
+	rm -fr $(OBJTREE)/*.o $(OBJTREE)/$(BINS)
 
 veryclean:
-	rm -rf ${TARGET_OUT}/$(BINS)
+	rm -rf $(BINS)
