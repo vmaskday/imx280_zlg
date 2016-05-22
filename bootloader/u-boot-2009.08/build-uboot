@@ -24,12 +24,12 @@ config_mx28() {
 build_uboot() {
     make ARCH=arm CROSS_COMPILE=$CC O=${TARGET_OUT}
     cp -av ${TARGET_OUT}/u-boot ../imx-bootlets-src-10.12.01/
-    sleep 3
-    cd ../imx-bootlets-src-10.12.01/
-    ./build
-    ls
-    cd -
-    #cp -av  u-boot.bin $TFTPBOOT -fr
+#    sleep 3
+#    cd ../imx-bootlets-src-10.12.01/
+#    ./build
+#    ls
+#    cd -
+#    #cp -av  u-boot.bin $TFTPBOOT -fr
 }
 
 read sel
