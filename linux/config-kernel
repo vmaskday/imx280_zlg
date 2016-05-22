@@ -47,6 +47,7 @@ build_EasyARM_iMX283A() {
 
 build_zImage() {
     make ARCH=arm CROSS_COMPILE=$CC O=$TARGET_OUT -j4
+    cp $TARGET_OUT/arch/arm/boot/zImage ../bootloader/imx-bootlets-src-10.12.01/
 }
 
 copy_zImage() {

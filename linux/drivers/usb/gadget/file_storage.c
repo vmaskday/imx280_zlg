@@ -3337,7 +3337,7 @@ static int __init check_parameters(struct fsg_dev *fsg)
 #ifdef CONFIG_FSL_UTP
 #include "fsl_updater.c"
 #endif
-static int __init fsg_bind(struct usb_gadget *gadget)
+static int fsg_bind(struct usb_gadget *gadget)
 {
 	struct fsg_dev		*fsg = the_fsg;
 	int			rc;
