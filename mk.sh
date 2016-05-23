@@ -13,7 +13,7 @@ build_bootloader() {
 build_kernel() {
 	echo ************ build $0 start **************
 	cd ${TOP_DIR}
-	cd linux
+	cd kerne/linux
 	echo 3|./config-kernel
 	echo 6|./config-kernel
 }
