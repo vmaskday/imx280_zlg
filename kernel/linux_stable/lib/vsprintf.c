@@ -2146,6 +2146,10 @@ int vscnprintf(char *buf, size_t size, const char *fmt, va_list args)
 
 	i = vsnprintf(buf, size, fmt, args);
 
+#if defined(CONFIG_DEBUG_LL)
+extern void printascii(const char *);
+	printascii(buf);
+#endif
 	if (likely(i < size))
 		return i;
 	if (size != 0)
