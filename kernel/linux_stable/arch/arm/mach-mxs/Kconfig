@@ -19,7 +19,7 @@ config ARCH_MXS
 	select CLKSRC_MMIO
 	select PINCTRL
 	select SOC_BUS
-	select SOC_IMX23
+	#select SOC_IMX23
 	select SOC_IMX28
 	select STMP_DEVICE
 	help
