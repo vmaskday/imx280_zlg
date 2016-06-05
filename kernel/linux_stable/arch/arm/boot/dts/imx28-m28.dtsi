@@ -16,9 +16,12 @@
 	compatible = "denx,m28", "fsl,imx28";
 
 	memory {
-		reg = <0x40000000 0x08000000>;
+		reg = <0x40000000 0x04000000>;
 	};
 
+	chosen {
+		stdout-path = &duart;
+	};
 	apb@80000000 {
 		apbh@80000000 {
 			gpmi-nand@8000c000 {
