@@ -16,7 +16,6 @@ kernel:
 	${MAKE} -C kernel/linux ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/linux_2.6 -j4
 
 kernel_4:
-	mkdir -p ${OUT_DIR}/linux_4
 	make -C kernel/linux_stable/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/kernel_4.4 mxs_defconfig
 	make -C kernel/linux_stable/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/kernel_4.4 -j4
 

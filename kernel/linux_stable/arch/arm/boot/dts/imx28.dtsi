@@ -31,6 +31,7 @@
 		serial2 = &auart2;
 		serial3 = &auart3;
 		serial4 = &auart4;
+		serial5 = &duart;
 		spi0 = &ssp1;
 		spi1 = &ssp2;
 		usbphy0 = &usbphy0;
@@ -1204,6 +1205,7 @@
 
 			duart: serial@80074000 {
 				compatible = "arm,pl011", "arm,primecell";
+				arm,primecell-periphid = <0x00041011>;
 				reg = <0x80074000 0x1000>;
 				interrupts = <47>;
 				clocks = <&clks 45>, <&clks 26>;

@@ -48,4 +48,4 @@ u32 magic_keys[MAGIC_KEY_NR] = {
 /************************************************
  *		Default command line		*
  ************************************************/
-char cmdline_def[] = "gpmi=g console=ttyAM0,115200n8 ubi.mtd=1 root=ubi0:rootfs rootfstype=ubifs  fec_mac= ethact";
+char cmdline_def[] = "gpmi=g console=ttyAMA5,115200n8 ubi.mtd=1 root=ubi0:rootfs rootfstype=ubifs  fec_mac= ethact";
