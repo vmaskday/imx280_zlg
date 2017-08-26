@@ -1,0 +1,70 @@
+---- Boot image header ----
+Signature 1:           STMP
+Signature 2:           sgtl
+Format version:        1.1
+Flags:                 0x0000
+Image blocks:          8638
+First boot tag block:  9
+First boot section ID: 0x00000000
+Key count:             1
+Key dictionary block:  7
+Header blocks:         6
+Section count:         1
+Section header size:   1
+Timestamp:             557087836000000
+Product version:       999.999.999
+Component version:     999.999.999
+Drive tag:             0x0000
+SHA-1 digest of header:
+    0x00000000: ac 1f e4 1d 17 cf 32 10 56 62 df 62 66 73 34 da 
+    0x00000010: 35 e3 b4 1d 
+Header digest is correct.
+
+---- Section table ----
+Section 0:
+    Identifier: 0x0
+    Offset:     10 blocks (160 bytes)
+    Length:     8626 blocks (138016 bytes)
+    Flags:      0x00000001
+                0x1 = ROM_SECTION_BOOTABLE
+
+---- Key dictionary ----
+
+Default key was found in key dictionary.
+
+Data encryption key:
+    0x00000000: 49 f1 dd 2f 0b 5b 1b a9 f1 76 bb 0f e8 69 38 d7 
+
+---- SHA-1 digest of entire image ----
+    0x00000000: 22 e2 80 8b 59 6f 8b 30 91 04 e9 0e df 50 b2 7b 
+    0x00000010: 03 6a 6c 37 
+Image digest is correct.
+
+---- Boot tags ----
+0000: @ block 000009 | id=0x00000000 | length=008626 | flags=0x00000001
+        0x1 = ROM_SECTION_BOOTABLE
+
+---- Sections ----
+Boot Section 0x00000000:
+  LOAD | adr=0x00000000 | len=0x00000068 | crc=0x64de8550 | flg=0x00000000
+  LOAD | adr=0x00000068 | len=0x0000057c | crc=0xb3facaec | flg=0x00000000
+  LOAD | adr=0x000005e4 | len=0x0000032c | crc=0xc2b49c20 | flg=0x00000000
+  LOAD | adr=0x00000910 | len=0x00000018 | crc=0xb109ae7f | flg=0x00000000
+  LOAD | adr=0x0000f000 | len=0x000012a8 | crc=0x3199f372 | flg=0x00000000
+  LOAD | adr=0x60004400 | len=0x00000004 | crc=0xce31abf1 | flg=0x00000000
+  LOAD | adr=0x60004404 | len=0x00000006 | crc=0x4900b059 | flg=0x00000000
+  LOAD | adr=0x6000440a | len=0x00000034 | crc=0x24800af3 | flg=0x00000000
+  LOAD | adr=0x60004440 | len=0x0000006c | crc=0xb1021dab | flg=0x00000000
+  LOAD | adr=0x600044ac | len=0x00000020 | crc=0xc7c0b1e8 | flg=0x00000000
+  LOAD | adr=0x600044cc | len=0x00000008 | crc=0x189232b1 | flg=0x00000000
+  LOAD | adr=0x600044d4 | len=0x000013d0 | crc=0x0fcd4c42 | flg=0x00000000
+  LOAD | adr=0x600058a4 | len=0x0001d8b4 | crc=0xbad375ab | flg=0x00000000
+  LOAD | adr=0x60023158 | len=0x00000e7c | crc=0xcf2f6dd6 | flg=0x00000000
+  LOAD | adr=0x60023fd4 | len=0x0000013e | crc=0xabc13eaf | flg=0x00000000
+  LOAD | adr=0x6040090c | len=0x00000028 | crc=0x59c780c3 | flg=0x00000000
+  CALL | adr=0x600058a4 | arg=0x00000000 | flg=0x00000000
+  LOAD | adr=0x00000100 | len=0x00000004 | crc=0xc8a5a1b7 | flg=0x00000001
+  LOAD | adr=0x00001000 | len=0x00000020 | crc=0x3b7c5ed5 | flg=0x00000000
+  CALL | adr=0x00001000 | arg=0x00000000 | flg=0x00000001
+  LOAD | adr=0x00001000 | len=0x00000020 | crc=0x77cd490d | flg=0x00000000
+  JUMP | adr=0x00001000 | arg=0x00000000 | flg=0x00000001

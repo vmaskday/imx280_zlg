@@ -1,0 +1,145 @@
+---- Boot image header ----
+Signature 1:           STMP
+Signature 2:           sgtl
+Format version:        1.1
+Flags:                 0x0003
+Image blocks:          12075
+First boot tag block:  16
+First boot section ID: 0x00000000
+Key count:             1
+Key dictionary block:  14
+Header blocks:         6
+Section count:         8
+Section header size:   1
+Timestamp:             557087836000000
+Product version:       111.222.333
+Component version:     999.888.777
+Drive tag:             0x0000
+SHA-1 digest of header:
+    0x00000000: c4 33 96 30 85 22 71 e9 a2 4f a7 6a ff 9d 74 2d 
+    0x00000010: 43 58 93 a4 
+Header digest is correct.
+
+---- Section table ----
+Section 0:
+    Identifier: 0x0
+    Offset:     17 blocks (272 bytes)
+    Length:     7 blocks (112 bytes)
+    Flags:      0x00000001
+                0x1 = ROM_SECTION_BOOTABLE
+Section 1:
+    Identifier: 0x20
+    Offset:     25 blocks (400 bytes)
+    Length:     8619 blocks (137904 bytes)
+    Flags:      0x00000001
+                0x1 = ROM_SECTION_BOOTABLE
+Section 2:
+    Identifier: 0x64
+    Offset:     8645 blocks (138320 bytes)
+    Length:     3396 blocks (54336 bytes)
+    Flags:      0x00000001
+                0x1 = ROM_SECTION_BOOTABLE
+Section 3:
+    Identifier: 0x5a
+    Offset:     12042 blocks (192672 bytes)
+    Length:     4 blocks (64 bytes)
+    Flags:      0x00000001
+                0x1 = ROM_SECTION_BOOTABLE
+Section 4:
+    Identifier: 0x5b
+    Offset:     12047 blocks (192752 bytes)
+    Length:     15 blocks (240 bytes)
+    Flags:      0x00000001
+                0x1 = ROM_SECTION_BOOTABLE
+Section 5:
+    Identifier: 0x5c
+    Offset:     12063 blocks (193008 bytes)
+    Length:     4 blocks (64 bytes)
+    Flags:      0x00000001
+                0x1 = ROM_SECTION_BOOTABLE
+Section 6:
+    Identifier: 0x100
+    Offset:     12068 blocks (193088 bytes)
+    Length:     3 blocks (48 bytes)
+    Flags:      0x00000000
+Section 7:
+    Identifier: 0x800
+    Offset:     12072 blocks (193152 bytes)
+    Length:     1 block (16 bytes)
+    Flags:      0x00000001
+                0x1 = ROM_SECTION_BOOTABLE
+
+---- Key dictionary ----
+
+Default key was found in key dictionary.
+
+Data encryption key:
+    0x00000000: b3 ae 39 6d 1c c2 90 13 bf fd 42 df a4 96 6c dd 
+
+---- SHA-1 digest of entire image ----
+    0x00000000: 86 27 3f f5 90 52 d3 8f 76 4c e3 e1 2d 93 79 ac 
+    0x00000010: 69 3f eb 3e 
+Image digest is correct.
+
+---- Boot tags ----
+0000: @ block 000016 | id=0x00000000 | length=000007 | flags=0x00000001
+        0x1 = ROM_SECTION_BOOTABLE
+0001: @ block 000024 | id=0x00000020 | length=008619 | flags=0x00000001
+        0x1 = ROM_SECTION_BOOTABLE
+0002: @ block 008644 | id=0x00000064 | length=003396 | flags=0x00000001
+        0x1 = ROM_SECTION_BOOTABLE
+0003: @ block 012041 | id=0x0000005a | length=000004 | flags=0x00000001
+        0x1 = ROM_SECTION_BOOTABLE
+0004: @ block 012046 | id=0x0000005b | length=000015 | flags=0x00000001
+        0x1 = ROM_SECTION_BOOTABLE
+0005: @ block 012062 | id=0x0000005c | length=000004 | flags=0x00000001
+        0x1 = ROM_SECTION_BOOTABLE
+0006: @ block 012067 | id=0x00000100 | length=000003 | flags=0x00000000
+0007: @ block 012071 | id=0x00000800 | length=000001 | flags=0x00000001
+        0x1 = ROM_SECTION_BOOTABLE
+
+---- Sections ----
+Boot Section 0x00000000:
+  LOAD | adr=0x00000000 | len=0x00000004 | crc=0x6e7fdd1f | flg=0x00000001
+  LOAD | adr=0x00000000 | len=0x00000004 | crc=0x1ffb53b6 | flg=0x00000000
+  CALL | adr=0x0000f000 | arg=0x00000000 | flg=0x00000000
+  CALL | adr=0xf0000000 | arg=0x00000080 | flg=0x00000001
+  JUMP | adr=0x00000000 | arg=0x00000000 | flg=0x00000001
+Boot Section 0x00000020:
+  LOAD | adr=0x00004500 | len=0x0000000b | crc=0x29e6fb10 | flg=0x00000000
+  FILL | adr=0x00000000 | len=0x0003ffff | ptn=0x55555555
+  LOAD | adr=0x00000000 | len=0x00000068 | crc=0x14c09e7f | flg=0x00000000
+  LOAD | adr=0x00000068 | len=0x0000057c | crc=0x20eddfd8 | flg=0x00000000
+  LOAD | adr=0x000005e4 | len=0x0000032c | crc=0xeebc48cb | flg=0x00000000
+  LOAD | adr=0x00000910 | len=0x00000018 | crc=0x3e28be7b | flg=0x00000000
+  LOAD | adr=0x0000f000 | len=0x000012a8 | crc=0xdcdeb4e6 | flg=0x00000000
+  LOAD | adr=0x60004400 | len=0x00000004 | crc=0x1b2f1ea5 | flg=0x00000000
+  LOAD | adr=0x60004404 | len=0x00000006 | crc=0xf4705d6e | flg=0x00000000
+  LOAD | adr=0x6000440a | len=0x00000034 | crc=0xf7e67634 | flg=0x00000000
+  LOAD | adr=0x60004440 | len=0x0000006c | crc=0x8537cffc | flg=0x00000000
+  LOAD | adr=0x600044ac | len=0x00000020 | crc=0xc7c0b1e8 | flg=0x00000000
+  LOAD | adr=0x600044cc | len=0x00000008 | crc=0x765abe7e | flg=0x00000000
+  LOAD | adr=0x600044d4 | len=0x000013d0 | crc=0x0fcd4c42 | flg=0x00000000
+  LOAD | adr=0x600058a4 | len=0x0001d8b4 | crc=0x177370e7 | flg=0x00000000
+  LOAD | adr=0x60023158 | len=0x00000e7c | crc=0x99d2857a | flg=0x00000000
+  LOAD | adr=0x60023fd4 | len=0x0000013e | crc=0x73267d37 | flg=0x00000000
+  LOAD | adr=0x6040090c | len=0x00000028 | crc=0xa786e710 | flg=0x00000000
+  JUMP | adr=0x600058a4 | arg=0x00000064 | flg=0x00000000
+Boot Section 0x00000064:
+  LOAD | adr=0x00026000 | len=0x0000d41c | crc=0xd65ce6eb | flg=0x00000000
+  CALL | adr=0x00026040 | arg=0x00000000 | flg=0x00000000
+Boot Section 0x0000005a:
+  LOAD | adr=0x00000000 | len=0x00000008 | crc=0x29943727 | flg=0x00000000
+  CALL | adr=0x60018a01 | arg=0x00000000 | flg=0x00000000
+  CALL | adr=0x600058a4 | arg=0x00000000 | flg=0x00000000
+Boot Section 0x0000005b:
+  LOAD | adr=0x00010000 | len=0x000000c4 | crc=0x418d1e65 | flg=0x00000000
+  CALL | adr=0x00006840 | arg=0xdeadbeef | flg=0x00000000
+Boot Section 0x0000005c:
+  FILL | adr=0x00000200 | len=0x00000001 | ptn=0x55555555
+  FILL | adr=0x00000400 | len=0x00000002 | ptn=0x55aa55aa
+  FILL | adr=0x00000800 | len=0x00000004 | ptn=0x55aa66bb
+  FILL | adr=0x00000100 | len=0x00000100 | ptn=0x4c8e4c8e
+Data Section 0x00000100: (48 bytes, 3 blocks)
+Boot Section 0x00000800:
+  MODE | mod=0x00000000

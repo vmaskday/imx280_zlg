@@ -1,0 +1,50 @@
+---- Boot image header ----
+Signature 1:           STMP
+Signature 2:           sgtl
+Format version:        1.1
+Flags:                 0x0000
+Image blocks:          15
+First boot tag block:  9
+First boot section ID: 0x00000000
+Key count:             1
+Key dictionary block:  7
+Header blocks:         6
+Section count:         1
+Section header size:   1
+Timestamp:             557087836000000
+Product version:       999.999.999
+Component version:     999.999.999
+Drive tag:             0x0000
+SHA-1 digest of header:
+    0x00000000: ec a4 cd 14 1a b3 a8 e7 22 6f d4 12 dd 56 95 d3 
+    0x00000010: c1 a0 19 29 
+Header digest is correct.
+
+---- Section table ----
+Section 0:
+    Identifier: 0x0
+    Offset:     10 blocks (160 bytes)
+    Length:     3 blocks (48 bytes)
+    Flags:      0x00000001
+                0x1 = ROM_SECTION_BOOTABLE
+
+---- Key dictionary ----
+
+Default key was found in key dictionary.
+
+Data encryption key:
+    0x00000000: 44 04 62 2b 7a ab 1e ab 7a ee b1 7f 53 60 3c 70 
+
+---- SHA-1 digest of entire image ----
+    0x00000000: 5b ab 98 29 93 a1 da bf 8e 24 b2 73 8d 45 0e 8f 
+    0x00000010: b9 ab 3c 1c 
+Image digest is correct.
+
+---- Boot tags ----
+0000: @ block 000009 | id=0x00000000 | length=000003 | flags=0x00000001
+        0x1 = ROM_SECTION_BOOTABLE
+
+---- Sections ----
+Boot Section 0x00000000:
+  FILL | adr=0x00000000 | len=0x00040000 | ptn=0x00000000
+  LOAD | adr=0x00001000 | len=0x0000000c | crc=0xe6726261 | flg=0x00000000
