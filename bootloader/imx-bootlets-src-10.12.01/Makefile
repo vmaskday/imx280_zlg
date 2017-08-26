@@ -32,14 +32,14 @@ gen_bootstream: linux_prep boot_prep power_prep linux.bd uboot.bd linux.bd uboot
 	@echo "by using the rootfs/boot/zImage"
 	sed -i 's,[^ *]zImage.*;,\tzImage="$(DFT_IMAGE)";,' linux.bd
 	sed -i 's,[^ *]zImage.*;,\tzImage="$(DFT_IMAGE)";,' linux_ivt.bd
-	elftosb -c ./linux.bd -o i$(ARCH)_linux.sb
-	elftosb -f imx28 -c ./linux_ivt.bd -o i$(ARCH)_ivt_linux.sb
+	./elftosb -c ./linux.bd -o i$(ARCH)_linux.sb
+	./elftosb -f imx28 -c ./linux_ivt.bd -o i$(ARCH)_ivt_linux.sb
 
 	@echo "by using the rootfs/boot/u-boot"
 	sed -i 's,[^ *]u_boot.*;,\tu_boot="$(DFT_UBOOT)";,' uboot.bd
 	sed -i 's,[^ *]u_boot.*;,\tu_boot="$(DFT_UBOOT)";,' uboot_ivt.bd
-	elftosb -c ./uboot.bd -o i$(ARCH)_uboot.sb
-	elftosb -f imx28 -c ./uboot_ivt.bd -o i$(ARCH)_ivt_uboot.sb
+	./elftosb -c ./uboot.bd -o i$(ARCH)_uboot.sb
+	./elftosb -f imx28 -c ./uboot_ivt.bd -o i$(ARCH)_ivt_uboot.sb
 	
 	#cp -f ./imx28_ivt_uboot.sb /mnt/hgfs/VmShares/i.MX283_DDR2_BSP/ 
 	#cp -f ./imx28_ivt_linux.sb /mnt/hgfs/VmShares/i.MX283_DDR2_Kernel/ 
@@ -68,8 +68,8 @@ boot_prep:
 
 updater: linux_prep boot_prep power_prep
 	@echo "Build updater firmware"
-	elftosb -c ./updater.bd -o updater.sb
-	elftosb -f imx28 -c ./updater_ivt.bd -o updater_ivt.sb
+	./elftosb -c ./updater.bd -o updater.sb
+	./elftosb -f imx28 -c ./updater_ivt.bd -o updater_ivt.sb
 linux_prep:
 ifneq "$(CMDLINE1)" ""
 	@echo "by using environment command line"
@@ -97,7 +97,7 @@ install:
 
 distclean: clean
 clean:
-	-rm -rf *.sb
+	-rm -rf *.sb u-boot zImage
 	rm -f sd_mmc_bootstream.raw
 	$(MAKE) -C linux_prep clean ARCH=$(ARCH)
 	$(MAKE) -C boot_prep clean ARCH=$(ARCH)

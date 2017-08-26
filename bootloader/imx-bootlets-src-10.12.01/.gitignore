@@ -9,3 +9,4 @@ initramfs.cpio.gz
 *.map
 zImage
 u-boot
+elftosb

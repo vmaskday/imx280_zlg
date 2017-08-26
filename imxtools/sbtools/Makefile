@@ -3,7 +3,7 @@ CC=gcc
 LD=gcc
 CFLAGS=-O3 -g -std=c99 -W -Wall `pkg-config --cflags libusb-1.0` $(DEFINES)
 LDFLAGS=`pkg-config --libs libusb-1.0`
-BINS=elftosb sbtoelf sbloader rsrctool elftosb1
+BINS=sbtoelf sbloader rsrctool elftosb1
 
 ifdef O
 ifeq ("$(origin O)", "command line")

@@ -36,8 +36,8 @@ build_bootstream() {
 
 build_tools
 build_kernel
-cp OUT/kernel/arch/arm/boot/zImage  bootloader/imx-bootlets-src-10.12.01/
-#cp OUT/kernel_4.4/arch/arm/boot/zImage  bootloader/imx-bootlets-src-10.12.01/
+#cp OUT/kernel/arch/arm/boot/zImage  bootloader/imx-bootlets-src-10.12.01/
+cp OUT/kernel_4.4/arch/arm/boot/zImage  bootloader/imx-bootlets-src-10.12.01/
 build_bootloader
 cp ./OUT/bootloader/u-boot bootloader/imx-bootlets-src-10.12.01/
 build_bootstream
