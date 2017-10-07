@@ -1,0 +1,17 @@
+// STMP378x ROM command script to load and run U-Boot
+
+sources {
+	spl="./u-boot-spl";
+        uboot="./u-boot";
+}
+
+section (0) {
+
+        load spl;
+        load ivt (entry = spl:_start) > 0x8000;
+	hab call 0x8000;
+
+        load uboot;
+        load ivt (entry = uboot:_start) > 0x8000;
+	hab jump 0x8000;
+}
