@@ -141,11 +141,12 @@ void mxs_common_spl_init(const uint32_t arg, const uint32_t *resptr,
 
 	mxs_power_wait_pswitch();
 
+	/**led and beep**/
 	//gpio_direction_output(MX28_PAD_SSP0_DATA7__GPIO_2_7, 0);
 	//gpio_direction_output(MX28_PAD_SSP0_DATA6__GPIO_2_6, 1);
-	gpio_direction_output(MX28_PAD_SAIF0_MCLK__GPIO_3_20, 0);
+	//gpio_direction_output(MX28_PAD_SAIF0_MCLK__GPIO_3_20, 0);
 	//gpio_set_value(MX28_PAD_SSP0_DATA7__GPIO_2_7, 0);
-	udelay(10000);
+	//udelay(10000);
 
 	if (mxs_boot_modes[data->boot_mode_idx].boot_pads == MXS_BM_JTAG) {
 		debug("SPL: Waiting for JTAG user\n");

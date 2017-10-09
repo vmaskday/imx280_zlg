@@ -29,8 +29,7 @@ DECLARE_GLOBAL_DATA_PTR;
 void lowlevel_init(void) {
 	//gpio_direction_output(MX28_PAD_SAIF0_MCLK__GPIO_3_20, 0);
 	//gpio_direction_output(MX28_PAD_SSP0_DATA6__GPIO_2_6, 1);
-	gpio_direction_output(MX28_PAD_SSP0_DATA7__GPIO_2_7, 0);
-	udelay(10000);
+	//gpio_direction_output(MX28_PAD_SSP0_DATA7__GPIO_2_7, 0);
 }
 
 void reset_cpu(ulong ignored) __attribute__((noreturn));
