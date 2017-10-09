@@ -1,6 +1,6 @@
-#porting new linux kernel and u-boot to imx280
+#porting new linux kernel and u-boot to imx280#
 
-##Init environment
+##Init environment##
 
 fetch code:<br>
 <pre>
@@ -24,9 +24,9 @@ Build tools:<br>
  $make tools
 </pre>
 
-##Build code
+##Build code##
 
-###Build u-boot-2017.09<br>
+###Build u-boot-2017.09###
 <pre>
  $ cd ${TopDir}
  $ cd bootloader/u-boot-2017.09/
@@ -37,26 +37,26 @@ Download u-boot-2017.09 to EasyArm-imx280a board<br>
  $ ./flash_imx280.sh
 </pre>
 
-###Build u-boot-2009
+###Build u-boot-2009###
 <pre>
  $ cd ${TopDir}
  $ make bootloader
 </pre>
 
-###Build Linux kernel
+###Build Linux kernel###
 <pre>
  $ cd ${TopDir}
  $ make kernel  #build linux kernel 2.6
  $ make kernel_4  #build linux kernel 4.6
 </pre>
 
-###Build bootstream
+###Build bootstream###
 <pre>
  $ cd ${TopDir}
  $ make bootstream
 </pre>
 
-###Download images
+###Download images###
 <pre>
  $ cd ${TopDir}
  $ ./flash_imx280.sh bootloader/imx-bootlets-src-10.12.01/imx28_ivt_linux.sb   #download linux kernel
