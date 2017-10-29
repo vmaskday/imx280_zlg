@@ -23,8 +23,15 @@
 
 const iomux_cfg_t iomux_setup[] = {
 	/* DUART */
+#if 1
+//EasyARM-imx280 DUART gpio is gpio3_2 gpio3_3
+	MX28_PAD_PWM0__GPIO_3_16, //set default duart tx gpio
 	MX28_PAD_AUART0_CTS__DUART_RX,
 	MX28_PAD_AUART0_RTS__DUART_TX,
+#else
+	MX28_PAD_AUART0_CTS__DUART_RX,
+	MX28_PAD_AUART0_RTS__DUART_TX,
+#endif
 
 	/* MMC0 */
 	MX28_PAD_SSP0_DATA0__SSP0_D0 | MUX_CONFIG_SSP0,
