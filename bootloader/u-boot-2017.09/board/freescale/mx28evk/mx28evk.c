@@ -88,7 +88,7 @@ static int mx28evk_mmc_card_detect(int id)
 		return 1;
 	}
 
-	return gpio_get_value(MX28_PAD_SSP0_DETECT__SSP0_CARD_DETECT);
+	return !gpio_get_value(MX28_PAD_SSP0_DETECT__SSP0_CARD_DETECT);
 }
 
 int board_mmc_init(bd_t *bis)
