@@ -17,7 +17,7 @@
 	compatible = "fsl,imx28-evk", "fsl,imx28";
 
 	memory {
-		reg = <0x40000000 0x08000000>;
+		reg = <0x40000000 0x04000000>;
 	};
 
 	apb@80000000 {
@@ -32,9 +32,9 @@
 			ssp0: ssp@80010000 {
 				compatible = "fsl,imx28-mmc";
 				pinctrl-names = "default";
-				pinctrl-0 = <&mmc0_8bit_pins_a
+				pinctrl-0 = <&mmc0_4bit_pins_a
 					&mmc0_cd_cfg &mmc0_sck_cfg>;
-				bus-width = <8>;
+				bus-width = <4>;
 				wp-gpios = <&gpio2 12 0>;
 				vmmc-supply = <&reg_vddio_sd0>;
 				status = "okay";
@@ -217,7 +217,7 @@
 
 			duart: serial@80074000 {
 				pinctrl-names = "default";
-				pinctrl-0 = <&duart_pins_a>;
+				pinctrl-0 = <&duart_pins_b>;
 				status = "okay";
 			};
 

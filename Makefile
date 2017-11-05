@@ -20,8 +20,8 @@ bootloader:
 	#$(OUT_DIR)/tools/elftosb -f imx28 -c ${OUT_DIR}/uboot/uboot_ivt.bd -o ${OUT_DIR}/uboot/boot.sb
 
 kernel:
-	make -C kernel/linux_stable/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/kernel mxs_defconfig
-	make -C kernel/linux_stable/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/kernel -j8
+	make -C kernel/linux-4.13.11/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/kernel mxs_defconfig
+	make -C kernel/linux-4.13.11/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/kernel -j8
 
 tools:
 	make -C elftosb/ O=$(OUT_DIR)/tools/
