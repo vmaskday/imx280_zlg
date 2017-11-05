@@ -26,6 +26,8 @@ tools:
 	rm $(OUT_DIR)/tools/*.o
 	make -C imxtools/sbtools/ O=$(OUT_DIR)/tools/
 	rm $(OUT_DIR)/tools/*.o
+	make -C imxtools/uuc/ O=$(OUT_DIR)/tools/
+	rm $(OUT_DIR)/tools/*.o
 	strip $(OUT_DIR)/tools/*
 
 clean:
