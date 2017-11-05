@@ -14,7 +14,9 @@ bootloader:
 	${MAKE} -C bootloader/u-boot-2017.09/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/uboot mx28evk_defconfig
 	${MAKE} -C bootloader/u-boot-2017.09/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/uboot u-boot.sb -j8
 	cp bootloader/u-boot-2017.09/bootstream/uboot_ivt.bd ${OUT_DIR}/uboot/
-	cd ${OUT_DIR}/uboot; ../tools/elftosb -f imx28 -c uboot_ivt.bd -o boot.sb
+	cd ${OUT_DIR}/uboot; rm u-boot.sb;../tools/elftosb -f imx28 -c uboot_ivt.bd -o uboot.sb
+	cd ${OUT_DIR}/uboot; ./tools/mxsboot sd uboot.sb uboot.sd
+	# dd if= ${OUT_DIR}/uboot/uboot.sd of=/def/sdf1
 	#$(OUT_DIR)/tools/elftosb -f imx28 -c ${OUT_DIR}/uboot/uboot_ivt.bd -o ${OUT_DIR}/uboot/boot.sb
 
 kernel:
