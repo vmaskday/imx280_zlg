@@ -3,7 +3,7 @@ $(shell [ -d ${OUT_DIR} ] || mkdir -p ${OUT_DIR})
 _cross_compile=$(shell cd cross_compile/bin/;pwd)
 _out_dir=$(shell cd $OUT_DIR;pwd)
 
-CC=${_cross_compile}/arm-none-eabi-
+CC=${_cross_compile}/arm-linux-gnueabi-
 
 .PHONY: bootloader kernel tools bootstream 
 
@@ -20,9 +20,8 @@ bootloader:
 	#$(OUT_DIR)/tools/elftosb -f imx28 -c ${OUT_DIR}/uboot/uboot_ivt.bd -o ${OUT_DIR}/uboot/boot.sb
 
 kernel:
-	make -C kernel/linux-4.13.11/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/kernel mxs_defconfig
-	make -C kernel/linux-4.13.11/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/kernel -j8
-
+	make -C kernel/linux-4.19.88/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/kernel mxs_defconfig
+	make -C kernel/linux-4.19.88/ ARCH=arm CROSS_COMPILE=${CC} O=${OUT_DIR}/kernel -j8
 tools:
 	make -C elftosb/ O=$(OUT_DIR)/tools/
 	rm $(OUT_DIR)/tools/*.o
