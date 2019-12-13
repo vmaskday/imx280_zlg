@@ -158,10 +158,10 @@
 					fsl,pull-up = <MXS_PULL_DISABLE>;
 				};
 
-				led_pin_gpio3_5: led_gpio3_5@0 {
+				led_pin_gpio3_20: led_gpio3_20@0 {
 					reg = <0>;
 					fsl,pinmux-ids = <
-						MX28_PAD_AUART1_TX__GPIO_3_5
+						MX28_PAD_SAIF0_MCLK__GPIO_3_20
 					>;
 					fsl,drive-strength = <MXS_DRIVE_4mA>;
 					fsl,voltage = <MXS_VOLTAGE_HIGH>;
@@ -341,12 +341,17 @@
 	leds {
 		compatible = "gpio-leds";
 		pinctrl-names = "default";
-		pinctrl-0 = <&led_pin_gpio3_5>;
+		pinctrl-0 = <&led_pin_gpio3_20>;
 
 		user {
 			label = "Heartbeat";
-			gpios = <&gpio3 5 0>;
+			gpios = <&gpio2 7 1>;
 			linux,default-trigger = "heartbeat";
+		};
+		sdcard {
+			label = "sdcard";
+			gpios = <&gpio3 20 1>;
+			linux,default-trigger = "mmc0";
 		};
 	};
 
